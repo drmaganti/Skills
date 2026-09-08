@@ -1,10 +1,46 @@
 # Skills
 
-A small library of reusable **AI task skills**: structured instruction files that define when a capability should activate, how work should be performed, and what quality checks must pass before output is delivered.
+A library of reusable **AI task skills**: structured instruction files that define when a capability should activate, how work should be performed, and what quality checks must pass before output is delivered.
 
-The repository currently contains one skill:
+## Skills
 
-- [`SKILL.md`](./SKILL.md) — **article-writing**, for producing evidence-based long-form content while matching supplied voice/brand guidance and avoiding generic AI-writing patterns.
+### Article Writing
+
+[`skills/article-writing/SKILL.md`](./skills/article-writing/SKILL.md)
+
+For evidence-based long-form content that matches supplied voice/brand guidance while avoiding generic AI-writing patterns.
+
+Covers:
+
+- articles, guides, blog posts, tutorials, and newsletters;
+- voice capture from supplied examples;
+- evidence-first structure;
+- rules against invented metrics/biographical claims;
+- banned generic/hype patterns;
+- technical-guide, essay, and newsletter structure;
+- final factuality, structure, voice, and formatting checks.
+
+### Modern Product Design
+
+[`skills/modern-product-design/SKILL.md`](./skills/modern-product-design/SKILL.md)
+
+For polished modern websites, landing pages, dashboards, SaaS interfaces, application screens, redesigns, and high-fidelity prototypes.
+
+Covers:
+
+- strategy before styling;
+- concrete visual references instead of vague style adjectives;
+- reusable product design systems;
+- modern typography, layout, spacing, surfaces, and motion;
+- avoidance of common AI-generated website patterns;
+- responsive behavior and accessibility;
+- Codex-compatible usage via `.agents/skills/`;
+- implementation and rendered visual QA.
+
+Companion files:
+
+- [`REFERENCES.md`](./skills/modern-product-design/REFERENCES.md) — 21st.dev, Godly, Awwwards, MotionSites, ScrollCraft, HyperFrames, shadcn/ui, and recommended combinations.
+- [`DESIGN_SYSTEM_TEMPLATE.md`](./skills/modern-product-design/DESIGN_SYSTEM_TEMPLATE.md) — reusable template for typography, colors, spacing, grids, components, motion, responsive behavior, accessibility, anti-patterns, and approvals.
 
 ## What a skill is
 
@@ -22,42 +58,32 @@ A good skill should define:
 
 The goal is to make high-quality behavior reusable without relying on a long conversation to rediscover the same instructions.
 
-## Current article-writing skill
-
-The current skill covers:
-
-- long-form articles, guides, blog posts, tutorials, and newsletters;
-- voice capture from supplied examples;
-- evidence-first structure;
-- rules against invented metrics/biographical claims;
-- banned generic/hype patterns;
-- different structural guidance for technical guides, essays, and newsletters;
-- a final quality gate for factuality, structure, voice, and formatting.
-
 ## Repository structure
 
 ```text
-README.md        repository purpose and usage
-SKILL.md         current article-writing skill
-CONTRIBUTING.md  standard for adding/changing skills
-MAINTENANCE.md   review/version/freshness discipline
-```
-
-If the library grows, move each skill into a named directory while preserving a clear index, for example:
-
-```text
+README.md
+CONTRIBUTING.md
+MAINTENANCE.md
 skills/
   article-writing/
     SKILL.md
-  market-research/
+  modern-product-design/
     SKILL.md
+    REFERENCES.md
+    DESIGN_SYSTEM_TEMPLATE.md
 ```
-
-Do not reorganize solely for aesthetics while there is only one skill.
 
 ## Using a skill
 
 Provide the relevant `SKILL.md` to an AI system that supports reusable instructions/skills, or use it as the source-of-truth instruction set when performing that task.
+
+For Codex project-local discovery, a skill can be copied into:
+
+```text
+.agents/skills/<skill-name>/
+```
+
+Keep companion files with the skill when the workflow references them.
 
 The consuming platform may have its own metadata/schema requirements; keep platform-specific packaging separate from the core behavioral content where practical.
 
@@ -77,4 +103,4 @@ The consuming platform may have its own metadata/schema requirements; keep platf
 
 ## Status
 
-Active reference/library repository. The current scope is intentionally small; add a new skill only when a repeated workflow benefits from a durable, testable instruction contract.
+Active reference/library repository. Add a new skill when a repeated workflow benefits from a durable, testable instruction contract.
